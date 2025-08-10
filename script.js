@@ -1,12 +1,35 @@
-// Configuração do carrossel
-const swiper = new Swiper('.swiper', {
-    loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-    },
-});
+let player;
 
-// Efeito de corações caindo
+// Função que o YouTube chama quando a API está pronta — deve estar no escopo global
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('ytplayer', {
+        height: '0',
+        width: '0',
+        videoId: 'pl_zwfpwmbk', // ID do vídeo que você quer tocar
+        playerVars: { 
+            'autoplay': 0, 
+            'controls': 0 
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    // Player carregado, pode adicionar lógica aqui se quiser
+    console.log('Player do YouTube pronto!');
+}
+
+function playMusic() {
+    if (player && typeof player.playVideo === 'function') {
+        player.playVideo();
+    } else {
+        alert('O player ainda não está pronto. Por favor, aguarde um momento e tente novamente.');
+    }
+}
+
+// Efeito dos corações caindo
 function createHeart() {
     const heart = document.createElement('div');
     heart.classList.add('heart');
@@ -18,23 +41,10 @@ function createHeart() {
 }
 setInterval(createHeart, 500);
 
-// Player do YouTube
-let player;
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('ytplayer', {
-        height: '0',
-        width: '0',
-        videoId: 'pl_zwfpwmbk', // ID da música que você enviou
-        playerVars: { 
-            'autoplay': 0, 
-            'controls': 0 
-        }
-    });
-}
-
-// Tocar música
-function playMusic() {
-    if (player) {
-        player.playVideo();
-    }
-}
+// Configuração do carrossel Swiper
+const swiper = new Swiper('.swiper', {
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+    },
+});
