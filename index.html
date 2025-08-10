@@ -3,7 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amorzy - anah bestt</title>
+
+  <title>Amorzy - Nosso Momento</title>
+
+  <!-- Meta Tags para SEO -->
+  <meta name="description" content="Celebre seu amor com fotos, histórias e música em um layout romântico e responsivo." />
+  <meta name="keywords" content="amor, fotos, música, relacionamento, galeria, contador, Spotify" />
+  <meta name="author" content="Richard Alerrandro" />
+
+  <!-- Open Graph para redes sociais -->
+  <meta property="og:title" content="Amorzy - Nosso Momento" />
+  <meta property="og:description" content="Celebre seu amor com fotos, histórias e música em um layout romântico e responsivo." />
+  <meta property="og:image" content="IMG-20250718-WA0006.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://seusite.com.br" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <!-- Google Fonts - Tipografia combinada -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- Swiper CSS para carrossel vertical -->
   <link
@@ -11,80 +33,118 @@
     href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
   />
 
-  <!-- Seu CSS -->
+  <!-- CSS principal -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Acessibilidade: foco visível customizado -->
+  <style>
+    :focus-visible {
+      outline: 3px solid #ff4d88;
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 <body>
 
-  <header>
+  <header role="banner">
     <h1>Nosso Momento</h1>
-    <p>de coração, baby!</p>
+    <p>Celebrando nosso amor com fotos, histórias e música</p>
+
+    <!-- Menu fixo para navegação -->
+    <nav aria-label="Navegação principal" class="main-nav">
+      <ul>
+        <li><a href="#carousel-vertical" tabindex="0">Fotos em Destaque</a></li>
+        <li><a href="#main-info" tabindex="0">Detalhes do Amor</a></li>
+        <li><a href="#gallery-section" tabindex="0">Galeria</a></li>
+        <li><a href="#footer" tabindex="0">Rodapé</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <!-- Carrossel vertical com fotos em formato retrato -->
-    <section id="carousel-vertical" class="section">
-      <h2>Photoss </h2>
-      <div class="swiper vertical-swiper">
+  <main role="main">
+    <!-- Carrossel Vertical com fotos em formato retrato -->
+    <section id="carousel-vertical" class="section" tabindex="-1" aria-label="Carrossel vertical com fotos do casal">
+      <h2>Fotos em Destaque</h2>
+      <div class="swiper vertical-swiper" aria-live="polite">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <img
               src="IMG-20250718-WA0006.jpg"
-              alt="Foto 1"
+              alt="Foto vertical do casal sorrindo no parque"
               class="vertical-photo"
+              loading="lazy"
             />
           </div>
           <div class="swiper-slide">
             <img
               src="IMG-20250718-WA0008.jpg"
-              alt="Foto 2"
+              alt="Foto vertical do casal em uma viagem à praia"
               class="vertical-photo"
+              loading="lazy"
             />
           </div>
           <div class="swiper-slide">
             <img
               src="IMG-20250718-WA0009.jpg"
-              alt="Foto 3"
+              alt="Foto vertical do casal abraçado ao pôr do sol"
               class="vertical-photo"
+              loading="lazy"
             />
           </div>
           <div class="swiper-slide">
             <img
               src="IMG-20250718-WA0020.jpg"
-              alt="Foto 4"
+              alt="Foto vertical do casal rindo juntos"
               class="vertical-photo"
+              loading="lazy"
             />
           </div>
         </div>
-        <div class="swiper-pagination"></div>
+        <!-- Paginação com botão para navegação via teclado -->
+        <div class="swiper-pagination" role="navigation" aria-label="Paginação do carrossel"></div>
       </div>
     </section>
 
     <!-- Botão principal para abrir modal com infos, contador e Spotify -->
-    <section id="main-info" class="section">
-      <button id="openMainModal" class="btn-primary">
-        Ver detalhes 💖
+    <section id="main-info" class="section" tabindex="-1">
+      <button id="openMainModal" class="btn-primary" aria-haspopup="dialog" aria-controls="mainModal">
+        Ver detalhes do nosso amor 💖
       </button>
     </section>
 
     <!-- Modal principal -->
-    <div id="mainModal" class="modal hidden">
+    <div id="mainModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
       <div class="modal-content">
-        <span class="close-btn" id="closeMainModal">&times;</span>
+        <button class="close-btn" id="closeMainModal" aria-label="Fechar modal">&times;</button>
 
-        <h2>Youu </h2>
+        <h2 id="modalTitle">Nosso Relacionamento</h2>
 
         <!-- Imagem combinada estilo cartão -->
         <div class="modal-photo-text">
-          <img src="IMG-20250718-WA0006.jpg" alt="Foto casal" class="modal-photo" />
+          <img
+            src="IMG-20250718-WA0006.jpg"
+            alt="Foto do casal estilo cartão"
+            class="modal-photo"
+            loading="lazy"
+          />
           <div class="modal-text">
-            <p>Desde <strong>2024</strong>, construindo memórias inesquecíveis.</p>
-            <p>Já são <span id="daysTogether"></span> dias juntos ❤️</p>
+            <p>Desde <strong>18 de julho de 2025</strong>, construindo memórias inesquecíveis.</p>
+            <p>Já são <span id="daysTogether" aria-live="polite"></span> dias juntos ❤️</p>
             <p>"Você é meu porto seguro e minha inspiração diária."</p>
 
             <!-- Botão Spotify - link para abrir música -->
-            <a href="https://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6" target="_blank" class="spotify-btn" aria-label="Ouvir no Spotify">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" alt="Spotify" />
+            <a
+              href="https://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="spotify-btn"
+              aria-label="Ouvir no Spotify"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/174/174872.png"
+                alt="Logo Spotify"
+                loading="lazy"
+              />
               Ouvir no Spotify
             </a>
           </div>
@@ -93,54 +153,61 @@
     </div>
 
     <!-- Segundo botão para galeria interativa -->
-    <section id="gallery-section" class="section">
-      <button id="openGalleryModal" class="btn-secondary">
-        Ver galeria feita com amor 🌟
+    <section id="gallery-section" class="section" tabindex="-1">
+      <button id="openGalleryModal" class="btn-secondary" aria-haspopup="dialog" aria-controls="galleryModal">
+        Ver galeria dos nossos melhores momentos 🌟
       </button>
     </section>
 
     <!-- Modal da galeria com zoom e corações animados -->
-    <div id="galleryModal" class="modal hidden">
+    <div id="galleryModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="galleryTitle" tabindex="-1">
       <div class="modal-content gallery-content">
-        <span class="close-btn" id="closeGalleryModal">&times;</span>
-        <h2>Galeria de Memórias</h2>
+        <button class="close-btn" id="closeGalleryModal" aria-label="Fechar modal">&times;</button>
+        <h2 id="galleryTitle">Galeria de Memórias</h2>
 
-        <div id="galleryContainer">
+        <div id="galleryContainer" aria-live="polite" aria-label="Galeria de fotos com zoom">
           <!-- Fotos estilo polaroid -->
-          <div class="polaroid-photo">
-            <img src="IMG-20250718-WA0006.jpg" alt="Memória 1" />
-            <p>você</p>
+          <div class="polaroid-photo" tabindex="0">
+            <img src="IMG-20250718-WA0006.jpg" alt="Primeiro passeio juntos" loading="lazy" />
+            <p>Primeiro passeio juntos</p>
           </div>
-          <div class="polaroid-photo">
-            <img src="IMG-20250718-WA0008.jpg" alt="Memória 2" />
-            <p>you</p>
+          <div class="polaroid-photo" tabindex="0">
+            <img src="IMG-20250718-WA0008.jpg" alt="Noite inesquecível" loading="lazy" />
+            <p>Noite inesquecível</p>
           </div>
-          <div class="polaroid-photo">
-            <img src="IMG-20250718-WA0009.jpg" alt="Memória 3" />
-            <p>aaa</p>
+          <div class="polaroid-photo" tabindex="0">
+            <img src="IMG-20250718-WA0009.jpg" alt="Nosso café da manhã favorito" loading="lazy" />
+            <p>Nosso café da manhã favorito</p>
           </div>
-          <div class="polaroid-photo">
-            <img src="IMG-20250718-WA0020.jpg" alt="Memória 4" />
-            <p>olhar lindo</p>
+          <div class="polaroid-photo" tabindex="0">
+            <img src="IMG-20250718-WA0020.jpg" alt="Risos e alegria" loading="lazy" />
+            <p>Risos e alegria</p>
           </div>
         </div>
 
-        <!-- Camada para os corações animados -->
-        <div id="heartLayer"></div>
+        <!-- Contêiner para os corações animados -->
+        <div id="heartLayer" aria-hidden="true"></div>
       </div>
     </div>
   </main>
 
-  <footer>
-    <p> 2025 Amorzy. Todos os direitos reservados.</p>
+  <footer id="footer" role="contentinfo">
+    <p>© 2025 Amorzy. Todos os direitos reservados.</p>
+    <!-- Botão voltar ao topo -->
+    <button
+      id="backToTop"
+      class="btn-secondary"
+      aria-label="Voltar ao topo da página"
+      title="Voltar ao topo"
+    >
+      ↑ Topo
+    </button>
   </footer>
 
-  <!-- Player do YouTube oculto -->
-  <div id="ytplayer"></div>
-
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" async></script>
+  <script src="https://www.youtube.com/iframe_api" async></script>
+  <script src="script.js" defer></script>
+
 </body>
 </html>
