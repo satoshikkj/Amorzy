@@ -1,12 +1,12 @@
 // Variável global para o player do YouTube
 let player;
 
-// Função que o YouTube chama quando a API está pronta — deve estar no escopo global
+// Função chamada pela API do YouTube quando está pronta
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('ytplayer', {
     height: '0',
     width: '0',
-    videoId: 'pl_zwfpwmbk', // ID do vídeo
+    videoId: 'pl_zwfpwmbk', // ID do vídeo do YouTube
     playerVars: {
       autoplay: 0,
       controls: 0,
@@ -79,11 +79,9 @@ galleryContainer.addEventListener('click', (e) => {
     e.target.parentElement.classList.contains('polaroid-photo')
   ) {
     const clickedPhoto = e.target.parentElement;
-    // Toggle zoom
     if (clickedPhoto.classList.contains('zoomed')) {
       clickedPhoto.classList.remove('zoomed');
     } else {
-      // Remove zoom de outras fotos
       document
         .querySelectorAll('.polaroid-photo.zoomed')
         .forEach((photo) => photo.classList.remove('zoomed'));
@@ -92,11 +90,11 @@ galleryContainer.addEventListener('click', (e) => {
   }
 });
 
-// Animação dos corações caindo no modal da galeria
+// Efeito dos corações caindo — apenas dentro do modal da galeria
 const heartLayer = document.getElementById('heartLayer');
 
 function createHeart() {
-  if (galleryModal.classList.contains('hidden')) return; // Só cria se modal aberto
+  if (galleryModal.classList.contains('hidden')) return;
 
   const heart = document.createElement('div');
   heart.classList.add('heart');
@@ -111,10 +109,9 @@ function createHeart() {
     heart.remove();
   }, 7000);
 }
-
 setInterval(createHeart, 500);
 
-// Iniciar carrossel Swiper vertical
+// Inicializa o Swiper no carrossel vertical
 const swiper = new Swiper('.vertical-swiper', {
   direction: 'vertical',
   loop: true,
