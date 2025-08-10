@@ -1,36 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nosso Momento</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amorzy - Nosso Momento</title>
+
+<!-- Swiper CSS para carrossel vertical -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- Fonte e estilo base -->
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <h1>Você é meu paraíso</h1>
+<header>
+  <h1>Você é meu paraíso</h1>
+  <p>Celebrando nosso amor com fotos, histórias e música</p>
+</header>
 
-    <!-- Carrossel -->
-    <div class="swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="IMG-20250718-WA0006.jpg" alt="Foto 1" /></div>
-            <div class="swiper-slide"><img src="IMG-20250718-WA0008.jpg" alt="Foto 2" /></div>
-            <div class="swiper-slide"><img src="IMG-20250718-WA0009.jpg" alt="Foto 3" /></div>
-            <div class="swiper-slide"><img src="IMG-20250718-WA0020.jpg" alt="Foto 4" /></div>
+<main>
+
+  <!-- Carrossel Vertical com fotos em formato retrato -->
+  <section id="carousel-vertical" class="section">
+    <h2>Fotos em Destaque</h2>
+    <div class="swiper vertical-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="IMG-20250718-WA0006.jpg" alt="Foto 1" class="vertical-photo" />
         </div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-slide">
+          <img src="IMG-20250718-WA0008.jpg" alt="Foto 2" class="vertical-photo" />
+        </div>
+        <div class="swiper-slide">
+          <img src="IMG-20250718-WA0009.jpg" alt="Foto 3" class="vertical-photo" />
+        </div>
+        <div class="swiper-slide">
+          <img src="IMG-20250718-WA0020.jpg" alt="Foto 4" class="vertical-photo" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- Botão principal para abrir modal com infos, contador e Spotify -->
+  <section id="main-info" class="section">
+    <button id="openMainModal" class="btn-primary">
+      Ver detalhes do nosso amor 💖
+    </button>
+  </section>
+
+  <!-- Modal principal -->
+  <div id="mainModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="closeMainModal">&times;</span>
+
+      <h2>Nosso Relacionamento</h2>
+
+      <div class="modal-photo-text">
+        <img src="IMG-20250718-WA0006.jpg" alt="Foto casal" class="modal-photo" />
+        <div class="modal-text">
+          <p>Desde <strong>18 de julho de 2025</strong>, construindo memórias inesquecíveis.</p>
+          <p>Já são <span id="daysTogether"></span> dias juntos ❤️</p>
+          <p>"Você é meu porto seguro e minha inspiração diária."</p>
+
+          <a href="https://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6" target="_blank" class="spotify-btn" aria-label="Ouvir no Spotify">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" alt="Spotify" />
+            Ouvir no Spotify
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Segundo botão para galeria interativa -->
+  <section id="gallery-section" class="section">
+    <button id="openGalleryModal" class="btn-secondary">
+      Ver galeria dos nossos melhores momentos 🌟
+    </button>
+  </section>
+
+  <!-- Modal da galeria com zoom e corações animados -->
+  <div id="galleryModal" class="modal hidden">
+    <div class="modal-content gallery-content">
+      <span class="close-btn" id="closeGalleryModal">&times;</span>
+      <h2>Galeria de Memórias</h2>
+
+      <div id="galleryContainer">
+        <div class="polaroid-photo">
+          <img src="IMG-20250718-WA0006.jpg" alt="Memória 1" />
+          <p>Primeiro passeio juntos</p>
+        </div>
+        <div class="polaroid-photo">
+          <img src="IMG-20250718-WA0008.jpg" alt="Memória 2" />
+          <p>Noite inesquecível</p>
+        </div>
+        <div class="polaroid-photo">
+          <img src="IMG-20250718-WA0009.jpg" alt="Memória 3" />
+          <p>Nosso café da manhã favorito</p>
+        </div>
+        <div class="polaroid-photo">
+          <img src="IMG-20250718-WA0020.jpg" alt="Memória 4" />
+          <p>Risos e alegria</p>
+        </div>
+      </div>
+
+      <!-- Contêiner para os corações animados -->
+      <div id="heartLayer"></div>
+    </div>
+  </div>
+
+  <!-- Carrossel simples com play de música -->
+  <section id="simple-carousel" class="section">
+    <h2>Carrossel simples com música</h2>
+    <div class="swiper simple-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="IMG-20250718-WA0006.jpg" alt="Foto 1" />
+        </div>
+        <div class="swiper-slide">
+          <img src="IMG-20250718-WA0008.jpg" alt="Foto 2" />
+        </div>
+        <div class="swiper-slide">
+          <img src="IMG-20250718-WA0009.jpg" alt="Foto 3" />
+        </div>
+        <div class="swiper-slide">
+          <img src="IMG-20250718-WA0020.jpg" alt="Foto 4" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
 
-    <!-- Botão de música -->
     <button class="music-btn" onclick="playMusic()">🎵 Tocar Música</button>
-
-    <!-- Player do YouTube (oculto) -->
     <div id="ytplayer"></div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="script.js"></script>
+</main>
+
+<footer>
+  <p>© 2025 Amorzy. Todos os direitos reservados.</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
